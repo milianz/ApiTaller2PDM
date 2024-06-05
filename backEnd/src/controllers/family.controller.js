@@ -26,7 +26,7 @@ export const createFamily = async (req, res) => {
   }
 };
 
-export const getFamilies = async (res) => {
+export const getFamilies = async (req,res) => {
     try {
         const families = await Family.find();
         res.status(200).json(families);
