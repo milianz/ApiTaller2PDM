@@ -41,7 +41,7 @@ const familySchema = new mongoose.Schema(
     family_risk: {
       type: String,
       required: true,
-      enum: ["bajo", "medio", "alto", "vivienda deshabitada"],
+      enum: ["Bajo", "Medio", "Alto", "Vivienda deshabitada"],
     },
     longitude: {
       type: Number,
