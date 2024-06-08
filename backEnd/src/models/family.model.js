@@ -19,17 +19,12 @@ const memberSchema = new mongoose.Schema({
     required: true,
   },
   can_read: {
-    type: Boolean,
+    type: String,
     required: true,
   },
   can_write: {
-    type: Boolean,
-    required: true,
-  },
-  family_role: {
     type: String,
     required: true,
-    enum: ["padre", "madre", "hijo", "hija", "otro"],
   },
 });
 
@@ -48,9 +43,13 @@ const familySchema = new mongoose.Schema(
       required: true,
       enum: ["bajo", "medio", "alto", "vivienda deshabitada"],
     },
-    approximate_location: {
-      type: { type: String },
-      coordinates: [Number],
+    longitude: {
+      type: Number,
+      required: true,
+    },
+    latitude: {
+      type: Number,
+      required: true,
     },
     members: [memberSchema],
   },
@@ -58,6 +57,4 @@ const familySchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-
-familySchema.index({ approximate_location: "2dsphere" });
 export default mongoose.model("Family", familySchema);
